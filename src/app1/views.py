@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import CreditCardForm
-from .models import SellerBusinessDetails,SellerDetails
+from .models import SellerBusinessDetails,SellerDetails,SellerBankDetails
+from django.http import Http404
+from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -11,7 +14,6 @@ def home(request):
 def tryCredit(request):
     if request.method == 'POST':
         form = CreditCardForm(request.POST)
-        #print("cjdbsk")
         """
         try:
             obj = SellerBusinessDetails.object.get(sid)
@@ -25,3 +27,28 @@ def tryCredit(request):
     else:
         form = CreditCardForm()
     return render(request,'credit_card_input.html',{'form':form})
+
+def logredi(request):
+    if SellerDetails.objects.filter(sid=request.user).exists():
+        return redirect('#')
+    else:
+        logout(request)
+        raise Http404("invalid user")
+
+@login_required(login_url="/login/")
+def gst(request):
+    if SellerDetails.objects.filter(sid=request.user).exists():
+        obj = SellerDetails.objects.get(sid=request.user)
+        return render(request,"#",{'obj':obj})
+    else:
+        logout(request)
+        raise Http404("invalid user")
+
+@login_required(login_url="/login/")
+def kyc(request):
+    if SellerDetails.objects.filter(sid=request.user).exists():
+        obj = SellerDetails.objects.get(sid=request.user)
+        return render(request,"#",{'obj':obj})
+    else:
+        logout(request)
+        raise Http404("invalid user")

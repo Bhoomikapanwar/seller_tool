@@ -3,8 +3,11 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import eventlet
 from eventlet.hubs import trampoline
 import json
-from app1.models import T
-dsn = "dbname=proj1 user=hp password=bhoomika"  # customise this
+from app1.models import SellerBusinessDetails as Sbd , SellerDetails as Sd
+from django.contrib.auth.models import User
+
+from .import scheduleCron
+dsn = "dbname=proj1_1 user=bhoomika password=bhoomika"  # customise this
 
 def dblisten(q):
     """
@@ -36,8 +39,12 @@ def handle():
         o=json.loads(n.payload)
         #print(n.payload)
         #print(o['data']['no'],"Hello")
-        obj = T.objects.get(no=o['data']['no'])
-        print(obj.no,obj.name)
+        print(o['data']['sid_id'])
+        #usr = User.objects.get(username="bhoomika")
+        #obj = Sbd.objects.get(sid=o['data']['sid_id')
+        #obj1 = Sd.objects.get(sid=o['data']['sid_id'])
+        #print(obj.sid.username,obj.credit_card_no)
+        scheduleCron.tut(o['data']['sid_id'])
         """
         USING psycopg2 FOR QUERY EXECUTIONS
         #cnn1 = psycopg2.connect(dsn)
