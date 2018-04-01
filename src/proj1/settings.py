@@ -71,7 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'proj1.wsgi.application'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'logredi/'
 
 
 # Database

@@ -12,7 +12,7 @@ for x in sys.argv:
 server = smtplib.SMTP(host='smtp.gmail.com',port= 587)
 server.starttls()
 #Next, log in to the server
-server.login("bhoomika.mcs17.du@gmail.com", "etidestiny")
+server.login("bhoomika.mcs17.du@gmail.com", "enter password here")
 #server.ehlo()
 
 #server.ehlo()

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import CreditCardForm
 from .models import SellerBusinessDetails,SellerDetails,SellerBankDetails
@@ -31,7 +31,7 @@ def Credit(request):
 def logredi(request):
     if request.user.groups.filter(name="Seller"):
         if SellerDetails.objects.filter(sid=request.user).exists():
-            return redirect('#')
+            return redirect('/home/')
         else:
             logout(request)
             raise Http404("invalid user")

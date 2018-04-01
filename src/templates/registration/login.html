@@ -20,10 +20,7 @@
       {% csrf_token %}
       <img class="mb-4" src="http://media.corporate-ir.net/media_files/IROL/17/176060/img/logos/amazon_logo_RGB.jpg" alt="" width="200" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputUsername" class="sr-only"></label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-      <label for="inputPassword" class="sr-only"></label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      {{ form.as_p }}
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
