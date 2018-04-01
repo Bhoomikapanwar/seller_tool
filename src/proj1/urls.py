@@ -20,7 +20,10 @@ from app1 import views as v
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',  v.home),
-    path('input/', v.tryCredit),
+    path('credit/', v.Credit),
     path('login/', auth_views.login,name='login'),
-    path('logout/',auth_views.logout,{'next_page':'/login'},name='logout')
+    path('login/logredi/',v.logredi),
+    path('logout/',auth_views.logout,{'next_page':'/login'},name='logout'),
+    path('gst/' , v.gst),
+    path('kyc/' , v.kyc),
 ]

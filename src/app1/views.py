@@ -11,7 +11,7 @@ def home(request):
     response_html="<h1>Bhoomika</h1>"
     return HttpResponse(response_html)
 
-def tryCredit(request):
+def Credit(request):
     if request.method == 'POST':
         form = CreditCardForm(request.POST)
         """
@@ -29,11 +29,16 @@ def tryCredit(request):
     return render(request,'credit_card_input.html',{'form':form})
 
 def logredi(request):
-    if SellerDetails.objects.filter(sid=request.user).exists():
-        return redirect('#')
+    if request.user.groups.filter(name="Seller"):
+        if SellerDetails.objects.filter(sid=request.user).exists():
+            return redirect('#')
+        else:
+            logout(request)
+            raise Http404("invalid user")
     else:
-        logout(request)
-        raise Http404("invalid user")
+            logout(request)
+            raise Http404("invalid user")
+
 
 @login_required(login_url="/login/")
 def gst(request):
