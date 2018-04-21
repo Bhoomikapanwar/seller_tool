@@ -5,11 +5,20 @@ from .models import SellerBusinessDetails,SellerDetails,SellerBankDetails
 from django.http import Http404
 from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
+@login_required(login_url="/login/")
 def home(request):
     response_html="<h1>Bhoomika</h1>"
     return HttpResponse(response_html)
+
+@login_required(login_url="/login/")
+def noti(request):
+    usr = User.objects.get(username=request.user)
+    noti  = usr.notifications.all()
+    print(noti)
+    return render(request,'notifications.html',{'notices':noti})
 
 def Credit(request):
     if request.method == 'POST':
@@ -31,7 +40,7 @@ def Credit(request):
 def logredi(request):
     if request.user.groups.filter(name="Seller"):
         if SellerDetails.objects.filter(sid=request.user).exists():
-            return redirect('/home/')
+            return redirect('/gst/')
         else:
             logout(request)
             raise Http404("invalid user")
@@ -44,7 +53,7 @@ def logredi(request):
 def gst(request):
     if SellerDetails.objects.filter(sid=request.user).exists():
         obj = SellerDetails.objects.get(sid=request.user)
-        return render(request,"#",{'obj':obj})
+        return render(request,"gst.html",{'obj':obj})
     else:
         logout(request)
         raise Http404("invalid user")
@@ -53,7 +62,7 @@ def gst(request):
 def kyc(request):
     if SellerDetails.objects.filter(sid=request.user).exists():
         obj = SellerDetails.objects.get(sid=request.user)
-        return render(request,"#",{'obj':obj})
+        return render(request,"kyc.html",{'obj':obj})
     else:
         logout(request)
         raise Http404("invalid user")

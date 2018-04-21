@@ -2,23 +2,12 @@ import datetime
 import sys
 import smtplib
 
-#with open('dateInfo.txt','a') as outFile:
-#    outFile.write('\n'+str(datetime.datetime.now()))
-f = open('/home/bhoomika/write_date.txt','a')
-f.writelines(str(datetime.datetime.now()))
-for x in sys.argv:
-    f.writelines(x)
 
-server = smtplib.SMTP(host='smtp.gmail.com',port= 587)
-server.starttls()
-#Next, log in to the server
-server.login("schedulecronjob@gmail.com", "bhoomika")
-#server.ehlo()
-
-#server.ehlo()
-
-#Send the mail
-msg = "\nHello Bhoomika" # The /n separates the message from the headers
-server.sendmail("bhoomika.mcs17.du@gmail.com",str(sys.argv[1]), msg)
-
-f.close()
+def sendemail(msg):
+    server = smtplib.SMTP(host='smtp.gmail.com',port= 587)
+    server.starttls()
+    server.login("schedulecronjob@gmail.com", "bhoomika")
+    #Send the mail
+    # send the message via the server set up earlier.
+    server.send_message(msg)
+    #server.sendmail("bhoomika.mcs17.du@gmail.com",emailid, msg)

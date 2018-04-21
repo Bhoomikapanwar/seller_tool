@@ -20,6 +20,9 @@
   </head>
 
   <body class="text-center">
+
+    {% if not obj.sKYC %}
+    <p> "Your KYC details are still not submitted. We highly recommend you to fill it soon." </p>
     <form class="form-signin">
       <h1 class="h3 mb-3 font-weight-normal">Know your customer</h1>
       <label for="acn" class="sr-only">Aadhar card no.</label>
@@ -39,11 +42,10 @@
           <input type="hidden" value="remember-me">
         </label>
       </div>
-
-
       <button class="btn btn-primary  btn-lg btn-block" type="submit">Save information</button>
     </form>
-
-
+    {% else %}
+    <p> "Great! You have already submitted your KYC details" </p>
+    {% endif %}
   </body>
 </html>
