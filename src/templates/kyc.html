@@ -21,12 +21,16 @@
 
   <body class="text-center">
 
-    {% if not obj.sKYC %}
-    <p> "Your KYC details are still not submitted. We highly recommend you to fill it soon." </p>
-    <form class="form-signin">
+  {% if kyc_flag == 'empty' or kyc_flag == 'rejected' %}
+  <div style="padding-top: 50px; background-color: white;" >   </div>
+  <div class="alert alert-info">
+      <center><strong>We highly recommend you to fill your KYC Details soon</strong></center>
+  </div>
+    <form class="form-signin" method="post">
+      {% csrf_token %}
       <h1 class="h3 mb-3 font-weight-normal">Know your customer</h1>
       <label for="acn" class="sr-only">Aadhar card no.</label>
-      <input type="text" id="adhar" class="form-control" placeholder="Aadhar Number" required autofocus>
+      <input type="text" id="kyc_no" name="kyc_no" class="form-control" placeholder="Aadhar Number" required autofocus>
      <div class="mb-3">
         <label>
           <input type="hidden" value="remember-me">
@@ -45,7 +49,9 @@
       <button class="btn btn-primary  btn-lg btn-block" type="submit">Save information</button>
     </form>
     {% else %}
-    <p> "Great! You have already submitted your KYC details" </p>
+    <div class="alert alert-success">
+        <center><strong>Great! Your KYC details have been submitted!</strong></center>
+      </div>
     {% endif %}
   </body>
 </html>

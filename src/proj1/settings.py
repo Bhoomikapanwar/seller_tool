@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Application definition
 
 INSTALLED_APPS = [
+    'import_export',
+    'dashboard',
     'app1',
     'django.contrib.admin',
     'django.contrib.auth',

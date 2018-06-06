@@ -12,7 +12,7 @@
   <link rel="icon" href="../../../../favicon.ico">
 
     <title>GST</title>
-{% load static %}
+    {% load static %}
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Custom styles for this template -->
@@ -20,12 +20,16 @@
   </head>
 
   <body class="text-center">
-    {% if not obj.gst_no %}
-    <p> "Your GST no. is still not submitted. We highly recommend you to fill it soon." </p>
-    <form class="form-signin">
+    {% if gst_flag == 'empty' or gst_flag == 'rejected' %}
+    <div style="padding-top: 50px; background-color: white;" >   </div>
+    <div class="alert alert-info">
+        <center><strong>We highly recommend you to fill your GST Details soon</strong></center>
+      </div>
+    <form class="form-signin" method="post">
+       {% csrf_token %}
       <h1 class="h3 mb-3 font-weight-normal">GST INN</h1>
       <label for="GST INN" class="sr-only">GST INN</label>
-      <input type="text" id="gst" class="form-control" placeholder="GST INN" required autofocus>
+      <input type="text" id="gst" name="gst_no" class="form-control" placeholder="GST INN" required autofocus>
      <div class=" mb-3">
         <label>
           <input type="hidden" value="remember-me">
@@ -34,7 +38,9 @@
       <button class="btn btn-primary  btn-lg btn-block" type="submit">Save GST</button>
     </form>
     {% else %}
-    <p> "Great! You have already submitted the GST no." </p>
+    <div class="alert alert-success">
+        <center><strong>Great! Your GST details have been submitted!</strong></center>
+      </div>
     {% endif %}
   </body>
 </html>

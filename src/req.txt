@@ -1,0 +1,13 @@
+Django==2.0.3
+django-dev==0.2.1
+django-extensions==2.0.6
+django-model-utils==3.1.1
+django-notifications-hq==1.4.0a0
+eventlet==0.22.1
+greenlet==0.4.13
+jsonfield==2.0.2
+psycopg2==2.7.4
+python-crontab==2.2.8
+python-dateutil==2.7.0
+pytz==2018.3
+six==1.11.0

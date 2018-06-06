@@ -21,13 +21,16 @@ import notifications.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',  v.home),
-    path('credit/', v.Credit),
+    #path('home/',  v.home),
     path('login/', auth_views.login,name='login'),
     path('login/logredi/',v.logredi),
     path('logout/',auth_views.logout,{'next_page':'/login'},name='logout'),
     path('gst/' , v.gst),
     path('kyc/' , v.kyc),
+    path('credit/', v.Credit),
+    path('profile/',v.profile),
     path('notif/', include(notifications.urls, namespace='notifications')),
-    path('noti/',v.noti)
+    #path('noti/',v.noti),
+    path('health/',v.main),
+    path('home/',v.home)
 ]

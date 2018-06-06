@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+
+
+$(document).ready(function(){
+	<!-- On click event changes label to textbox -->
+    $("#button").click(function(){
+	for(i=1;i<5;i++)
+	{
+	var text = $('.text'+ i +'-info').text();
+	var input = $('<input id="attribute" type="text" value="' + text + '" />')
+     $('.text'+ i +'-info').text('').append(input);
+
+	 }
+    });
+
+	<!-- On click event changes label to textbox -->
+	$("#button1").click(function(){
+	for(i=5;i<10;i++)
+	{
+	var text = $('.text'+ i +'-info').text();
+	var input = $('<input id="attribute" type="text" value="' + text + '" />')
+     $('.text'+ i +'-info').text('').append(input);
+
+	 }
+    });
+
+	<!-- On click event changes label to textbox -->
+	$("#button2").click(function(){
+	for(i=10;i<16;i++)
+	{
+	var text = $('.text'+ i +'-info').text();
+	var input = $('<input id="attribute" type="text" value="' + text + '" />')
+     $('.text'+ i +'-info').text('').append(input);
+
+	 }
+    });
+});
+</script>
+  </head>
+  <body>
+  <center><h1>Details of seller</h1>
+    <div class="container">
+	 <div class="row" >
+	  <div class="col-lg-5 col-md-2 col-sm-6 col-xs-2 pull-left" >
+	  <h2><p class="text-left"><span class="glyphicon glyphicon-chevron-right"></span><b>Basic Details</b></p></h2>
+	  </div>
+	  <div class="col-lg-5 col-md-2 col-sm-6 col-xs-2 toppad  pull-right  ">
+            <A href="#" id="button1" >Edit<span class="glyphicon glyphicon-pencil"></span></A>
+      </div>
+	 </div>
+    <hr>
+
+			<div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Seller ID</td>
+                        <td class="text5-info">{{obj.sid}}</td>
+                      </tr>
+                      <tr>
+                        <td>Company Name</td>
+                        <td class="text6-info">{{obj.scompany_name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email Address</td>
+                        <td class="text7-info">{{object.semail}}</td>
+                      </tr>
+                        <tr>
+                        <td>Mobile No.</td>
+                        <td class="text8-info">{{obj.sphone}}</td>
+                        </tr>
+                        <tr>
+                        <td>KYC Value</td>
+                        <td class="text9-info">{{obj.sKYC}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+			</div>
+   </div>
+   <div class="container">
+	 <div class="row" >
+	   <div class="col-lg-5 col-md-2 col-sm-6 col-xs-2 pull-left" >
+	    <h2><p class="text-left"><span class="glyphicon glyphicon-chevron-right"></span><b>Bank Details</b></p></h2>
+	  </div>
+	  <div class="col-lg-5 col-md-2 col-sm-6 col-xs-24 toppad  pull-right  ">
+            <A href="#" id="button">Edit<span class="glyphicon glyphicon-pencil"></span></A>
+      </div>
+	 </div>
+    <hr>
+
+			<div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Account No.</td>
+                        <td class="text1-info">{{obj2.sacc_no}}</td>
+                      </tr>
+                      <tr>
+                        <td>Bank Name</td>
+                        <td class="text2-info">{{obj2.sbank_name}}</td>
+                      </tr>
+                      <tr>
+                        <td>IFSC Code</td>
+                        <td class="text4-info">{{obj2.sifsc_code}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+			</div>
+   </div>
+
+   <div class="container">
+	 <div class="row" >
+	  <div class="col-lg-5 col-md-2 col-sm-6 col-xs-2 pull-left" >
+	   <h2><p class="text-left"><span class="glyphicon glyphicon-chevron-right"></span><b>Business Details</b></p></h2>
+	  </div>
+	  <div class="col-lg-5 col-md-2 col-sm-6 col-xs-2 toppad  pull-right  ">
+            <A href="#" id="button2" >Edit<span class="glyphicon glyphicon-pencil"></span></A>
+      </div>
+	 </div>
+    <hr>
+
+   <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Card Holder Name</td>
+                        <td class="text11-info">{{obj.sname}}</td>
+                      </tr>
+                      <tr>
+                        <td>Card No.</td>
+                        <td class="text12-info">{{obj1.credit_card_no}}</td>
+                      </tr>
+                         <tr>
+                        <td>Expiry Date</td>
+                        <td class="text13-info">{{obj1.expiry_date}}</td>
+                      </tr>
+					    <tr>
+                        <td>GST No.</td>
+                        <td class="text14-info">{{obj1.gst_no}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+			</div>
+   </div>
+  </body>
+</html>

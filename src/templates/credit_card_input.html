@@ -6,15 +6,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
   </head>
+<body>
 
-  <body>
-
+{% if account_status == 'blocked' %}
+<div class="alert alert-warning alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <center> <strong>Oops! Your credit card has expired.!</strong>
+      <h6 class="ccd">Kindly update the credit card details first in order to continue unrestricted access to your account!</h6></center>
+  </div>
+{% endif %}
 <h1> Credit card Form</h1>
 <form method="post">
   {%csrf_token%}
   {{form.as_p}}
   <button type="submit"> Post </button>
 </form>
-
 </body>
 </html>
