@@ -17,15 +17,15 @@
     <!-- Custom styles for this template -->
     <link href="feedback.css" rel="stylesheet">
 
-    <script src="{% static '/assets/js/vendor/popper.min.js' %}"></script> 
-    <script src="{% static '/dist/js/bootstrap.min.js' %}"></script> 
-    <script src="{% static '/assets/js/vendor/holder.min.js' %}"></script>  
+    <script src="{% static '/assets/js/vendor/popper.min.js' %}"></script>
+    <script src="{% static '/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/assets/js/vendor/holder.min.js' %}"></script>
 
   </head>
 
   <body>
         {% block headerbar %}
-    
+
 
     <div  class="container-fluid">
       <div class="row">
@@ -42,8 +42,8 @@
               <form method="get"> {% csrf_token %}
               <li class="nav-item">
                 <a style="font-weight: 700"style="min-width: 170px" class="nav-link" href="#">
-                  Date
-                    From:<input  type="date" name="from_date"> </br>To: <input type="date" name="to_date"> 
+                  Date</br>
+                    From:<input type="date" name="from_date"> </br>To: <input type="date" name="to_date">
                 </a>
               </li>
               <li class="nav-item">
@@ -87,19 +87,19 @@
                 <a style="font-weight: 700"class="nav-link" href="#">
                     <input style="width:3.5mm;height: 4mm;"type="checkbox" name = "Negative Feedbacks">
                   Negative Feedbacks
-                  
+
                 </a>
               </li>
               <br>
-              <input style="font-weight: 700;font-size:0.5cm;width:6.5cm;height:1cm; background-color: rgb(124, 148, 97);"type="submit" name="Apply" value = "Enter To Apply" >
+              <input style="font-weight: 700;font-size:0.5cm;width:5.5cm;height:1cm; background-color: rgb(124, 148, 97);"type="submit" name="Apply" value = "Enter To Apply" >
               </form>
             </ul>
           </div>
-          
-        </nav>
-        
 
-        
+        </nav>
+
+
+
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -112,7 +112,7 @@
                   display : flex;
                   flex-flow : row wrap;
                 }
-                
+
                 div.innersection {
                   margin: 10px;
                   background-color: white;
@@ -123,15 +123,15 @@
                   transition-duration: 2s;
                   -webkit-transition-duration: 2s;
                 }
-                
+
                 div.innersection:hover {
                   box-shadow: 2px 3px 3px 2px rgba(3, 46, 92, 0.7);
                   border-color: grey;
                 }
-                
+
                 #block1
                 {
-                  
+
                   flex-basis : 60%;
                 }
                 @media (max-width : 800px)
@@ -140,7 +140,7 @@
                     flex-basis : 100%;
                   }
                 }
-                
+
                 @media (max-width : 600px)
                 {
                   #block1
@@ -151,10 +151,10 @@
                 </style>
 {% for key, value in filtered_result.items %}
             <MAIN id="part2">
-                
-                
+
+
                 <SECTION style="min-height : 80px;
-                                min-width : 100%; 
+                                min-width : 100%;
                                 padding-top: 20px;
                                 padding-right: 20px;
                                 padding-bottom: 10px;
@@ -176,15 +176,15 @@
                                 {%endfor%}
                   </DIV>
                 </SECTION>
-                
-                
+
+
             </MAIN>
             {%endfor%}
 
 
-    
 
-            
+
+
 
          <!--   {% for key, value in filtered_result.items %}
             <div>
@@ -194,7 +194,7 @@
             {%endfor%}
           </div>
         -->
-          
+
         </main>
       </div>
     </div>

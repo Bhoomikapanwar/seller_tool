@@ -78,7 +78,7 @@ def noti(request):
 def Credit(request):
     if request.method == 'POST':
         form = CreditCardForm(request.POST)
-        gst_no = request.POST['gst_no']
+        #gst_no = request.POST['gst_no']
         """
         try:
             obj = SellerBusinessDetails.object.get(sid)
@@ -88,6 +88,7 @@ def Credit(request):
             s01 = SellerDetails.objects.get(sid=request.user)
             obj = SellerBusinessDetails(sid=request.user,credit_card_no=form.cleaned_data['credit_card_no'],expiry_date=form.cleaned_data['expiry_date'])
             obj.save()
+            #return render(request,'health.html',{})
     else:
         form = CreditCardForm()
     return render(request,'credit_card_input.html',{'form':form})

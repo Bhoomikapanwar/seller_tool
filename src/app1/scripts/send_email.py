@@ -17,10 +17,9 @@ def create_msg(text,sub,from1,to):
 def sendemail(msg):
     server = smtplib.SMTP(host='smtp.gmail.com',port= 587)
     server.starttls()
-    server.login("bhoomika.mcs17.du@gmail.com", "etidestiny")
     #Email id to be used to send the emails
-    #server.login("schedulecronjob@gmail.com", "kinam123")
+    server.login("schedulecronjob@gmail.com", "kinam123")
     #Send the mail
     # send the message via the server set up earlier.
     server.send_message(msg)
-    #server.sendmail("bhoomika.mcs17.du@gmail.com",emailid, msg)
+    #server.sendmail("schedulecronjob@gmail.com",emailid, msg)

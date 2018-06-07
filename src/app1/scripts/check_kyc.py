@@ -4,7 +4,7 @@ from app1.models import SellerDetails as Sd
 from django.contrib.auth.models import User
 def notify_kyc(obj):
     tomail= str(obj['data']['semail'])
-    frommail = "bhoomika.mcs17.du@gmail.com"
+    frommail = "schedulecronjob@gmail.com"
     sid = obj['data']['sid_id']
     name = str(obj['data']['sname'])
     obj1 = Sd.objects.get(sid = sid)

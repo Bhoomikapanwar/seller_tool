@@ -21,10 +21,10 @@
 
     <LINK rel="stylesheet" type="text/css" href="style.css">
 
-    <script src="{% static '/assets/js/vendor/popper.min.js' %}"></script> 
-    <script src="{% static '/dist/js/bootstrap.min.js' %}"></script> 
-    <script src="{% static '/assets/js/vendor/holder.min.js' %}"></script> 
-    
+    <script src="{% static '/assets/js/vendor/popper.min.js' %}"></script>
+    <script src="{% static '/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/assets/js/vendor/holder.min.js' %}"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -33,7 +33,7 @@
 
   <body>
         {% block headerbar %}
-    
+
 
         <div  class="container-fluid">
             <div class="row">
@@ -44,7 +44,7 @@
                 <a style="font-size: 7mm;font-weight: 700"class="nav-link active" href="#">
                    <p></p>
                   <span style="height: 0.6cm;width:0.8cm" data-feather="align-justify"></span>
-                  
+
                   BASED ON <span class="sr-only">(current)</span>
                 </a>
               </li>
@@ -55,11 +55,11 @@
 
 
 
-              
+
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <button class="w3-bar-item w3-button tablink" style="font-weight:700;width:5.5cm;padding-left:0px;height:1.5cm ;font-weight:800px;border-radius: 3px;background-color: rgb(168, 195, 223)">PRODUCT</button>
-                  
+
                <!--   <div style="inline-size: 10px; background-color: #111;max-width: 10px;max-height: 10px;">ppp</div> -->
                 </a>
               </li>
@@ -86,8 +86,8 @@
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              
-              
+
+
             </h6>
           </div>
         </nav>
@@ -124,32 +124,32 @@ div.innersection:hover {
 
 #block1
 {
-	
+
   flex-basis : 60%;
-  
+
 }
 
 #block2
 {
-	
+
 	flex-basis : 40%;
 }
 
 #block3
 {
-	
+
 	flex-basis : 33.33%;
 }
 
 #block4
 {
-	
+
 	flex-basis : 33.33%;
 }
 
 #block5
 {
-	
+
 	flex-basis : 33.33%;
 }
 
@@ -175,7 +175,7 @@ div.innersection:hover {
             <MAIN id="part2">
                 {% for recommend in recommend_product %}
                 <SECTION style="min-height : 80px;
-                                min-width : 100%; 
+                                min-width : 100%;
                                 padding-top: 20px;
                                 padding-right: 20px;
                                 padding-bottom: 10px;
@@ -202,7 +202,7 @@ div.innersection:hover {
             <MAIN id="part2">
               {% for recommend in recommend_category %}
               <SECTION style="min-height : 80px;
-                              min-width : 100%; 
+                              min-width : 100%;
                               padding-top: 20px;
                               padding-right: 20px;
                               padding-bottom: 10px;
@@ -230,7 +230,7 @@ div.innersection:hover {
           <MAIN id="part2">
             {% for recommend in recommend_lowerprice %}
             <SECTION style="min-height : 80px;
-                            min-width : 100%; 
+                            min-width : 100%;
                             padding-top: 20px;
                             padding-right: 20px;
                             padding-bottom: 10px;
@@ -257,7 +257,7 @@ div.innersection:hover {
         <MAIN id="part2">
           {% for recommend in recommend_inventory %}
           <SECTION style="min-height : 80px;
-                          min-width : 100%; 
+                          min-width : 100%;
                           padding-top: 20px;
                           padding-right: 20px;
                           padding-bottom: 10px;
@@ -281,10 +281,10 @@ div.innersection:hover {
           {%endfor%}
       </MAIN>
 
-      <MAIN id="part2">
+    <!--  <MAIN id="part2">
         {% for recommend in recommend_othermeasures %}
         <SECTION style="min-height : 80px;
-                        min-width : 100%; 
+                        min-width : 100%;
                         padding-top: 20px;
                         padding-right: 20px;
                         padding-bottom: 10px;
@@ -304,14 +304,14 @@ div.innersection:hover {
           </DIV>
         </SECTION>
         {%endfor%}
-    </MAIN>
-  
+    </MAIN>-->
+
         </main>
       </div>
     </div>
 
 
-    
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -327,7 +327,7 @@ div.innersection:hover {
       feather.replace()
     </script>
 
-   
+
     {% endblock headerbar %}
   </body>
 </html>

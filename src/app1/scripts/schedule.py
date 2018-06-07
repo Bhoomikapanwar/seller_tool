@@ -25,11 +25,12 @@ def cron_sch():
     job1.minute.every(1)
     my_cron.write()
 
-    """
+"""
     for job in my_cron:
         my_cron.remove(job)
         my_cron.write()
-    """
+"""
+
 
 def run(*args):
     cron_sch()
