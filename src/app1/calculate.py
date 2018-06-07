@@ -9,7 +9,7 @@ class Trait(ABC):
     '''
         Objective: An abstract class which calculates the value of the trait and stores it in the database.
     '''
-    traitWeightageList = []
+
     def __init__(self, trait_cmp):
         '''
         Objective: A constructor which initializes the trait component variable.
@@ -18,7 +18,7 @@ class Trait(ABC):
         '''
         self.trait_component = trait_cmp
 
-    def template_method(self, trait_name, trait_value, recommendation_list,request):
+    def template_method(self, trait_name, trait_value, traitWeightageList,recommendation_list,request):
         '''
         Objective: Template method defines an algorithm's skeleton in the Trait base class
                     and let subclasses redefine certain steps of the algorithm.
@@ -29,11 +29,11 @@ class Trait(ABC):
         self.store_sid(table_name,request)
         value = self.calc_value(request)
         traitWeightage = self.returnTraitWeightage()
-        Trait.traitWeightageList.append(traitWeightage)
+        traitWeightageList.append(traitWeightage)
         self.saveRecommendation(value, recommendation_list,request)
         self.store_value(value, table_name, trait_name, trait_value,request)
-        overall_value_health = self.calc_overall_health(trait_value,Trait.traitWeightageList)
-        self.store_overall_value(TraitValueDetails,overall_value_health,request)
+        self.calc_overall_health(trait_value,traitWeightageList,request)
+        #self.store_overall_value(TraitValueDetails,overall_value_health,request)
 
     def find_table(self):
         '''
@@ -77,7 +77,7 @@ class Trait(ABC):
         trait_value.append(value)
         return value
 
-    def calc_overall_health(self,trait_value, traitWeightageList):
+    def calc_overall_health(self,trait_value, traitWeightageList,request):
         '''
         Objective: To calculate the overall health of the seller.
         Input Parameter: value_list - A list of Values of the corresponding traits defined in the trait_list
@@ -85,7 +85,11 @@ class Trait(ABC):
         '''
         numerator = [trait_value[i]*traitWeightageList[i] for i in range(len(trait_value))]
         overall_value_health = sum(numerator) / sum(traitWeightageList)
-        return overall_value_health
+        print(numerator)
+        print(traitWeightageList)
+        print(overall_value_health)
+        self.store_overall_value(TraitValueDetails,overall_value_health,request)
+        #return overall_value_health
 
     def store_overall_value(self,TraitValueDetails ,overall_value_health,request):
         '''

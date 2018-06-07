@@ -32,8 +32,11 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 # Application definition
 
 INSTALLED_APPS = [
-    'import_export',
+    'feedbacks_app',
     'dashboard',
+    'import_export',
+    'performance_app',
+    'recommendations_app',
     'app1',
     'django.contrib.admin',
     'django.contrib.auth',

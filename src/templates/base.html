@@ -1,18 +1,43 @@
-{% load static %}<!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Django Boards{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title> Dashboard </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/b.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static '/pricing.css' %}" rel="stylesheet">
   </head>
+
   <body>
-    <div class="container">
-      <ol class="breadcrumb my-4">
-        {% block breadcrumb %}
-        {% endblock %}
-      </ol>
-      {% block content %}
-      {% endblock %}
+
+    <div style="background-color: #111;width: 100%;color: white;" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow">
+
+      <h5 style="color:white;"class="my-0 mr-md-auto font-weight-normal"> Seller Tool</h5>
+      <nav style="color:white;" class="my-2 my-md-0 mr-md-3">
+        <a style="color:white;" class="p-2 " href="/profile">My Profile</a>
+        <!--<a style="color:white;"class="p-2 " href="#">Notifications</a>-->
+      </nav>
+
+      <!-- adding drop down button -->
+      <div class="dropdown">
+            <button style="background-color: whitesmoke;outline-color: #111;"class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Settings</a></li>
+              <li><a href="/logut">Logout</a></li>
+            </ul>
+      </div>
+
     </div>
-  </body>
-</html>
+    {% block headerbar %}
+    {% endblock headerbar %}
+    </body>
+    </html>

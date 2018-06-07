@@ -22,10 +22,10 @@
   <body>
 
       <div style="background-color: #111;width: 100%;height:1.9cm;font-size: 1.4rem;color: white;" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow">
-          <h5 style="color:white;font-weight: 800;"class="my-0 mr-md-auto font-weight-normal"> Logon</h5>
+          <h5 style="color:white;font-weight: 800;"class="my-0 mr-md-auto font-weight-normal"> Seller Tool</h5>
           <nav style="color:white;" class="my-2 my-md-0 mr-md-3">
             <a style="color:white;" class="p-2 " href="/profile">My Profile</a>
-            <a style="color:white;font-weight: 500;font-size: 1.4rem"class="p-2 " href="#">Notifications</a>
+            <!--<a style="color:white;font-weight: 500;font-size: 1.4rem"class="p-2 " href="#">Notifications</a>-->
           </nav>
 
         <!-- adding drop down button
@@ -79,7 +79,7 @@
             <form action="/health">
               <input  style="position:absolute;width:7cm ;bottom:20px;" type="submit" class="btn btn-lg btn-block btn-primary" value="Know More" />
             </form>
-            
+
           </div>
         </div>
 
@@ -95,9 +95,7 @@
 
                 <div style="position:relative ;top:0px;" class="wrapper">
                     <div style="position: relative ;top:0px;" class="c100 p80 blue">
-                        <span>{% for key,val in performance.items %}
-                            {{val}}%
-                          {%endfor%}</span>
+                        <span>{{performance}}</span>
                         <div class="slice">
                           <div class="bar"></div>
                           <div class="fill"></div>
@@ -112,7 +110,9 @@
               <li>Know your performance on the basis of different traits</li>
 
             </ul>
-            <button style="position:absolute;width:7cm ;bottom:20px;" type="button" href="{% url 'login' %}"class="btn btn-lg btn-block btn-primary">Know More </button>
+            <form action="/home/performance">
+              <input  style="position:absolute;width:7cm ;bottom:20px;" type="submit" class="btn btn-lg btn-block btn-primary" value="Know More" />
+            </form>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -125,7 +125,9 @@
                     <li>See there are some recommendations for you.</li>
 
                   </ul>
-                  <button style="position:absolute;width:7cm ;bottom:20px;" type="button" href="{% url 'login' %}"class="btn btn-lg btn-block btn-primary">Know More </button>
+                  <form action="/home/recommendations">
+                    <input  style="position:absolute;width:7cm ;bottom:20px;" type="submit" class="btn btn-lg btn-block btn-primary" value="Know More" />
+                  </form>
                 </div>
                 </div>
 
@@ -140,7 +142,9 @@
               <li>Check your Feedbacks.</li>
 
             </ul>
-            <button style="position:absolute;width:7cm ;bottom:20px;" type="button"href="{% url 'login' %}" class="btn btn-lg btn-block btn-primary">Know More </button>
+            <form action="/home/feedback">
+              <input  style="position:absolute;width:7cm ;bottom:20px;" type="submit" class="btn btn-lg btn-block btn-primary" value="Know More" />
+            </form>
           </div>
         </div>
       </div>

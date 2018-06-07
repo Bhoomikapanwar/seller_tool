@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Performance</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="feedback.css" rel="stylesheet">
+
+    <script src="{% static '/assets/js/vendor/popper.min.js' %}"></script> 
+    <script src="{% static '/dist/js/bootstrap.min.js' %}"></script> 
+    <script src="{% static '/assets/js/vendor/holder.min.js' %}"></script>  
+
+  </head>
+
+  <body>
+        {% block headerbar %}
+    
+
+    <div  class="container-fluid">
+      <div class="row">
+        <nav  style=" border-right: 3px solid #111;width:7cm; background-color:#D5E3C5; "class="col-md-2 d-none d-md-block sidebar">
+          <div  class="sidebar-sticky">
+            <ul  class="nav flex-column">
+              <li class="nav-item">
+                <a style="font-weight: 700"class="nav-link active" href="#">
+                  <br>
+                  <span data-feather="layers"></span>
+                 Apply Filters <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <form method="get"> {% csrf_token %}
+              <li class="nav-item">
+                <a style="font-weight: 700"style="min-width: 170px" class="nav-link" href="#">
+                  Date
+                    From:<input  type="date" name="from_date"> </br>To: <input type="date" name="to_date"> 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a style="font-weight: 700" class="nav-link" href="#">
+                  Rating
+                  <select  style="width:5.3cm" name="rating">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="1" >1</option>
+                    <option value="2" >2</option>
+                    <option value="3" >3</option>
+                    <option value="4" >4</option>
+                    <option value="5" >5</option>
+                  </select>
+
+                </a>
+              </li>
+              <li class="nav-item">
+                <a style="font-weight: 700"class="nav-link" href="#">
+                  Product </br>
+                  <select style="max-width: 200px" name="product">
+                      <option value="" selected disabled hidden>Choose here</option>
+                      {% for key,pid in seller_products.items %}
+                    <option style="min-width:5.3cm;" value={{pid}}>{{pid}}</option>
+                   {%endfor%}
+                  </select>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a style="font-weight: 700"class="nav-link" href="#">
+                  Keyword
+                    <input style="width:5.3cm"type="text" name="keyword">
+                </a>
+              </li>
+              <li class="nav-item">
+                <a style="font-weight: 700"class="nav-link" href="#">
+                    <input style="width:3.5mm;height: 4mm;" type="checkbox" name = "Positive Feedbacks">
+                  Positive Feedbacks
+                </a>
+              </li>
+              <li class="nav-item">
+                <a style="font-weight: 700"class="nav-link" href="#">
+                    <input style="width:3.5mm;height: 4mm;"type="checkbox" name = "Negative Feedbacks">
+                  Negative Feedbacks
+                  
+                </a>
+              </li>
+              <br>
+              <input style="font-weight: 700;font-size:0.5cm;width:6.5cm;height:1cm; background-color: rgb(124, 148, 97);"type="submit" name="Apply" value = "Enter To Apply" >
+              </form>
+            </ul>
+          </div>
+          
+        </nav>
+        
+
+        
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <h1 style="font-weight:700;font-size: 0.9cm;"class="h2">FEEDBACKS</h1>
+            </div>
+
+            <style>
+                .part2
+                {
+                  display : flex;
+                  flex-flow : row wrap;
+                }
+                
+                div.innersection {
+                  margin: 10px;
+                  background-color: white;
+                  box-shadow: 2px 3px 3px 2px rgba(3, 46, 92, 0.2);
+                  border-color: lightgrey;
+                  border-width: 1px;
+                  border-style: solid;
+                  transition-duration: 2s;
+                  -webkit-transition-duration: 2s;
+                }
+                
+                div.innersection:hover {
+                  box-shadow: 2px 3px 3px 2px rgba(3, 46, 92, 0.7);
+                  border-color: grey;
+                }
+                
+                #block1
+                {
+                  
+                  flex-basis : 60%;
+                }
+                @media (max-width : 800px)
+                {
+                  #block1{
+                    flex-basis : 100%;
+                  }
+                }
+                
+                @media (max-width : 600px)
+                {
+                  #block1
+                  {
+                    flex-basis : 100%;
+                  }
+                }
+                </style>
+{% for key, value in filtered_result.items %}
+            <MAIN id="part2">
+                
+                
+                <SECTION style="min-height : 80px;
+                                min-width : 100%; 
+                                padding-top: 20px;
+                                padding-right: 20px;
+                                padding-bottom: 10px;
+                                padding-left: 20px;
+                                display: inline-block;
+                                flex-basis : 33.33%;
+                                color:#111" id="block1">
+                  <DIV style="  min-height : 80px;
+                                min-width : 50%;
+                                padding-top: 20px;
+                                padding-right: 20px;
+                                padding-bottom: 20px;
+                                padding-left: 20px;
+                                font-weight: 690;
+                                font-size: 4.5mm;
+                                background-color: rgb(162, 187, 133)" class="innersection">
+                                {% for details in value %}
+                                {{details}} <br>
+                                {%endfor%}
+                  </DIV>
+                </SECTION>
+                
+                
+            </MAIN>
+            {%endfor%}
+
+
+    
+
+            
+
+         <!--   {% for key, value in filtered_result.items %}
+            <div>
+           {% for details in value %}
+                {{details}} </br>
+           {%endfor%}
+            {%endfor%}
+          </div>
+        -->
+          
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
+    {% endblock headerbar %}
+  </body>
+</html>

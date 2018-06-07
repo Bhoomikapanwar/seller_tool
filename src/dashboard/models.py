@@ -99,7 +99,7 @@ class TraitValueDetails(Base_TraitValueDetails):
 
     class Meta:
         managed = True
-        db_table = 'traits_value_details'
+        db_table = 'traits_value_details_s'
 
 """
 class Cancellation(Base_TraitValueDetails):    #for runtime

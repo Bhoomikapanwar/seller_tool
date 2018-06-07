@@ -18,6 +18,11 @@ from django.urls import path,include
 from django.contrib.auth import views as auth_views
 from app1 import views as v
 import notifications.urls
+from performance_app import views as perf_views
+from feedbacks_app import views as feed_views
+from recommendations_app import views as rec_views
+from dashboard import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +37,9 @@ urlpatterns = [
     path('notif/', include(notifications.urls, namespace='notifications')),
     #path('noti/',v.noti),
     path('health/',v.main),
-    path('home/',v.home)
+    path('home/',v.home),
+    path('home1/',views.home,name='home'),
+    path('home/performance/',perf_views.main,name='main'),
+    path('home/feedback/',feed_views.main,name='main'),
+    path('home/recommendations/',rec_views.main,name='main'),
 ]

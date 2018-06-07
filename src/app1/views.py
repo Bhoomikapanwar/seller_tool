@@ -7,7 +7,7 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import datetime,timedelta
-
+from performance_app.views import *
 
 from django.shortcuts import render
 #from dashboard.models import *
@@ -37,15 +37,28 @@ def logredi(request):
             logout(request)
             raise Http404("invalid user")
 
+@login_required(login_url="/login/")
 def home(request):
-    print('holaaaaa',request.user.username)
-    #val = ReturnValueForDashboard(request)
+    #print('holaaaaa',request.user.username)
+    val = ReturnValueForDashboard(request)
     #val = calc_overall_health()
     #print(val)
+    sid=request.user
+    trait_name = []
+    trait_value = []
+    recommendation_list = []
+    traitWeightageList=[]
+    for cls in Trait.__subclasses__():
+
+        class_name = cls.__name__
+        trait_component = re.sub( '(?<!^)(?=[A-Z])', '_', class_name ).lower()
+        obj = cls(trait_component)
+        obj.template_method(trait_name, trait_value,traitWeightageList ,recommendation_list,request)
+
     obj = TraitValueDetails.objects.get(sid= request.user)
     print(obj.overall_value_health)
-    health={'health':obj.overall_value_health}
-    return render(request,'home.html',health)
+    con={'health':obj.overall_value_health,'performance':val}
+    return render(request,'home.html',con)
 
 @login_required(login_url="/login/")
 def profile(request):
@@ -119,12 +132,13 @@ def main(request):
     trait_name = []
     trait_value = []
     recommendation_list = []
+    traitWeightageList=[]
     for cls in Trait.__subclasses__():
 
         class_name = cls.__name__
         trait_component = re.sub( '(?<!^)(?=[A-Z])', '_', class_name ).lower()
         obj = cls(trait_component)
-        obj.template_method(trait_name, trait_value, recommendation_list,request)
+        obj.template_method(trait_name, trait_value,traitWeightageList ,recommendation_list,request)
 
     recommendation_trait_list = zip(trait_name, trait_value, recommendation_list)
     return render(request,'health.html',{'recommendation_trait_list':recommendation_trait_list,'trait_value':trait_value,'trait_recommendation':recommendation_list})
