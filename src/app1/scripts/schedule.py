@@ -31,6 +31,5 @@ def cron_sch():
         my_cron.write()
 """
 
-
 def run(*args):
     cron_sch()
